@@ -1,0 +1,58 @@
+@use 'sass:color'
+
+@mixin button-style($colorName, $color)
+  .button--#{$colorName}
+    &.button--contained
+      border-color: darken($color, 10%)
+      background-color: $color
+      &:hover
+        background-color: darken($color, 10%)
+      &:focus
+        background-color: darken($color, 15%)
+    &.button--outlined
+      border-color: $color
+    &.button--outlined, &.button--text
+      color: $color
+      &:hover
+        color: darken($color, 10%)
+      &:focus
+        color: darken($color, 20%)
+
+.button
+  border-width: 2px
+  border-style: solid
+  cursor: pointer
+  &[disabled]
+    background-color: gray !important
+    border-color: gray !important
+    color: white !important
+    cursor: not-allowed
+  &--text
+    border-color: transparent
+    background-color: transparent
+  &--contained
+    color: white
+  &--small
+    font-size: 12px,
+    height: 20px
+  &--medium
+    font-size: 14px,
+    height: 30px
+  &--large
+    font-size: 16px,
+    height: 40px
+  &--extra-large
+    font-size: 20px,
+    height: 40px
+  &--full
+    display: block
+    width: 100%
+
+@include button-style('primary', purple)
+@include button-style('secondary', blue)
+@include button-style('special', brown)
+@include button-style('success', green)
+@include button-style('error', red)
+@include button-style('info', blue)
+@include button-style('info', lightblue)
+@include button-style('warning', yellow)
